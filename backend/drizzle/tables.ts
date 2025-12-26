@@ -9,7 +9,9 @@ export const postsTable = pgTable('postsTable', {
 
     title: text('title').notNull(),
 
-    description: text('description').notNull(),
+    description: text('description'),
+
+    fullDetail: text('fullDetail').notNull(),
 
     imageUrl: text('imageUrl'),
     readTimeMints: integer('readTimeMints').notNull(),

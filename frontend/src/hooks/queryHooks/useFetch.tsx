@@ -2,16 +2,18 @@ import { apiService } from "../../config/service.api"
 import { useQuery } from "@tanstack/react-query";
 
 
-type Post = {
+export type PostType = {
+    id: string,
     title: string;
-    description: string;
+    description?: string;
+    fullDetail: string,
     imageUrl: string;
     readTimeMints: number;
     category: 'entertainment' | 'myLife' | 'technology' | 'fashion' | 'travel' | 'games' | 'jobs' | 'others';
     tags: string[];
 };
 
-async function fetchPosts(): Promise<Post[] | string> {
+async function fetchPosts(): Promise<PostType[] | string> {
 
     try {
         const response = await apiService({

@@ -8,6 +8,9 @@ import type { RootState } from '../store/store';
 import { useContext, useEffect } from 'react';
 import { ScrollContext } from '../contextProvider/scrollContext';
 import { useFetch } from '../hooks/queryHooks/useFetch';
+import { PostsDataContextProvider } from '../contextProvider/postsDataContext';
+import { defaultCategoryFormat } from '../utils/defaultFormat';
+import { formatData } from '../utils/categoryDataFormating';
 
 
 export function HomePage() {
@@ -16,6 +19,7 @@ export function HomePage() {
     const navigate = useNavigate();
 
     const location = useLocation(); // to scroll to the contact section using useEffect hash based scroll
+
     const context = useContext(ScrollContext);
 
     /* Scroll whenever the hash changes  */
@@ -27,7 +31,6 @@ export function HomePage() {
 
 
     const { data, isLoading, isError, error } = useFetch(); // runs only ones when the HomePage mounts
-
 
 
     if (isLoading) return <div>
@@ -57,8 +60,23 @@ export function HomePage() {
 
     console.log("DATA:", data);
 
-    return (
-        <div className='flex flex-col gap-30'>
+    if (!Array.isArray(data)) return <div>
+        NO POSTS FETCHED</div>
+
+
+    const fashionCategoryFormatedData = formatData({ data: data, categoryTITLE: 'fashion' });
+
+
+    const myLifeCategoryFormatedData = formatData({ data: data, categoryTITLE: 'myLife' });
+
+    const entertainmentCategoryFormatedData = formatData({ data: data, categoryTITLE: 'entertainment' });
+
+    const jobsCategoryFormatedData = formatData({ data: data, categoryTITLE: 'jobs' });
+
+
+
+    return <PostsDataContextProvider data={data}>
+        < div className='flex flex-col gap-30' >
             <div>
                 <div className="flex items-end justify-between mb-8">
 
@@ -76,40 +94,16 @@ export function HomePage() {
             </div>
 
             <div className='flex flex-col gap-30'>
-                <CategorySection isDark={isDark} data={fashionData} />
-                <CategorySection isDark={isDark} data={fashionData} />
-                <CategorySection isDark={isDark} data={fashionData} />
-                <CategorySection isDark={isDark} data={fashionData} />
+                <CategorySection isDark={isDark} data={fashionCategoryFormatedData} />
+                <CategorySection isDark={isDark} data={myLifeCategoryFormatedData} />
+                <CategorySection isDark={isDark} data={entertainmentCategoryFormatedData} />
+                <CategorySection isDark={isDark} data={jobsCategoryFormatedData} />
             </div>
 
             <footer>
                 <ContactSection isDark={isDark}></ContactSection>
             </footer>
-        </div>
-    );
+        </div >
+    </PostsDataContextProvider >
 }
 
-
-const fashionData = {
-
-    title: "Fashion ",
-    subtitle: "Category",
-    cards: {
-        left: {
-            image: "...",
-            title: "Sustainable Fashion",
-            gradient: 'bg-gradient-to-br from-purple-900 to-purple-800'
-        },
-        center: {
-            image: "...",
-            title: "Representing brands as the source for inspiration",
-            gradient: 'bg-gradient-to-br from-amber-900 to-amber-800'
-        },
-        right: {
-            image: "...",
-            tag: "+ Fashion",
-            title: "How brands dictate the vision",
-            gradient: 'bg-gradient-to-br from-blue-900 to-blue-800'
-        }
-    }
-};

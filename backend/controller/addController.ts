@@ -10,7 +10,6 @@ export const addController: RequestHandler = async (req, res) => {
         await addPostsFunc(req.body);
         return res.status(201).json({ message: "Content added successfully" })
     } catch (error) {
-
         console.error(error);
         return defaultReturn(res);
     }

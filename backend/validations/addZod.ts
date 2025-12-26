@@ -8,7 +8,8 @@ const category = z.enum(['entertainment', 'myLife', 'technology', 'fashion', 'tr
 
 const addPostsSchema = z.object({
     title: z.string().min(3),
-    description: z.string().min(5),
+    description: z.string().min(10).optional(),
+    fullDetail: z.string().min(50),
     imageUrl: z.string(),
     readTimeMints: z.number(),
     category: category,
