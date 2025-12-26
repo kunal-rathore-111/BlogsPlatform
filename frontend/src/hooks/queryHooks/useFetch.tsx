@@ -1,35 +1,42 @@
-import { apiService } from "../../config/service.api";
-import { isAxiosError } from "axios";
+import { apiService } from "../../config/service.api"
 import { useQuery } from "@tanstack/react-query";
 
 
-async function fetchData(hash: string): Promise<any[]> {
+type Post = {
+    title: string;
+    description: string;
+    imageUrl: string;
+    readTimeMints: number;
+    category: 'entertainment' | 'myLife' | 'technology' | 'fashion' | 'travel' | 'games' | 'jobs' | 'others';
+    tags: string[];
+};
+
+async function fetchPosts(): Promise<Post[] | string> {
 
     try {
-        const res = await apiService({ method: "GET", url: hash });
+        const response = await apiService({
+            url: '/fetch-posts',
+            method: "GET"
+        });
 
-        return res.data;
-    }
-    catch (err) {
-        if (isAxiosError(err)) {
-            if (err.response?.status === 404) {
-                const msg = 'End point not found';
-                throw new Error(msg);
-            }
-            else {
-                const msg = err.response?.data?.message || 'Something went wrong while fetching axios error';
-                throw new Error(msg);
-            }
+        console.log(response.data);
+
+        if (response.data.posts) return response.data.posts;
+
+        else {
+            throw new Error(response.data.message || "Someething"); // if fetch failed due to db error
         }
-        throw new Error('Something went wrong while fetching')
 
+    } catch (err) {
+        console.log("Error while fetching- ", err);
+        throw err; // for useQuery
     }
 }
 
 
-export function useFetch(hash: string) {
+export const useFetch = () => {
     return useQuery({
-        queryKey: ["data"],
-        queryFn: () => { return fetchData(hash) }
-    })
+        queryKey: ['posts'],
+        queryFn: fetchPosts,
+    });
 }

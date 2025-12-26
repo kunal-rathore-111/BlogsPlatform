@@ -10,6 +10,7 @@ export default function App() {
 
 
   return <QueryClientProvider client={Client}>
+
     <BrowserRouter>
       <Routes>
         {/* Parent Route to keep fix the Nav bar */}

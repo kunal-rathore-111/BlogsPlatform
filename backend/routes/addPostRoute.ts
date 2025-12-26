@@ -2,8 +2,9 @@
 import express from "express";
 import { addPostMiddleware } from "../middleware/addPostMiddleware";
 import { addController } from "../controller/addController";
+import { checkPasswordMiddleware } from "../middleware/checkPasswordMiddleware";
 
-const addPost = express();
+export const addPost = express();
 
 
-addPost.post('/add-post/:password', addPostMiddleware, addController);
+addPost.post('/', checkPasswordMiddleware, addPostMiddleware, addController);

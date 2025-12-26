@@ -4,13 +4,14 @@ import { fetchPostsFunc } from "../services/fetchPostsService";
 
 
 
-export const fetchController: RequestHandler = (req, res) => {
+export const fetchController: RequestHandler = async (req, res) => {
 
-
-    const posts = fetchPostsFunc();
-
-
-    res.json({
+    const posts = await fetchPostsFunc();
+    if (posts != null) return res.json({
         posts
+    })
+
+    else return res.json({
+        message: "fetch failed"
     })
 } 

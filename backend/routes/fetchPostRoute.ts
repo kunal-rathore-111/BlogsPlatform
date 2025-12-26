@@ -1,6 +1,3 @@
-
-
-
 import express from "express";
 import { fetchController } from "../controller/fetchController";
 

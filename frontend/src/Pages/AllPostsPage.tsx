@@ -34,7 +34,7 @@ export const AllPostsPage = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.4 }}
-            className={`min-h-screen p-4 md:p-8 transition-colors duration-300 ${isDark ? 'bg-[#0a0a0a]' : 'bg-white'}`}
+            className={`min-h-screen p-4 md:p-8 transition-colors duration-300`}
         >
             <div className="max-w-7xl mx-auto">
                 <button
