@@ -33,6 +33,7 @@ async function fetchPosts(): Promise<PostType[] | string> {
         }
 
     } catch (err) {
+
         console.log("Error while fetching- ", err);
         throw err; // for useQuery
     }

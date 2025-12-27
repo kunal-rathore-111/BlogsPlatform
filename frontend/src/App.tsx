@@ -8,6 +8,12 @@ import { AllPostsPage } from "./Pages/AllPostsPage";
 import { PostsDataContextProvider } from "./contextProvider/postsDataContext";
 import { useFetch } from "./hooks/queryHooks/useFetch";
 
+
+
+
+
+
+
 function LenisWrapper({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
   const location = useLocation();
@@ -48,6 +54,7 @@ function LenisWrapper({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   const { data, isLoading, isError, error } = useFetch(); // runs only ones when the HomePage mounts
+
 
   return (
     <PostsDataContextProvider props={{ data, isLoading, isError, error }}>

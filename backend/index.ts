@@ -30,7 +30,7 @@ app.use(cors({
             return callback(new Error("Invalid origin"));
         }
     },
-    methods: ["GET", "POST", "OPTIONS"],
+    methods: ["GET", "POST", "DELETE", "OPTIONS"],
 }));
 
 const PORT = 3000;
