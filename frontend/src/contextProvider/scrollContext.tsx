@@ -1,5 +1,4 @@
 import { createContext, useRef, type ReactNode } from "react"
-import { useNavigate } from "react-router-dom";
 
 interface scrollContextDTO {
     contactRef: React.RefObject<HTMLDivElement | null>,

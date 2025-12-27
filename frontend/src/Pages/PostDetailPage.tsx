@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { motion } from 'motion/react';
 import type { RootState } from '../store/store';
@@ -10,7 +10,6 @@ import { NoPostsComponent } from '../components/NoPosts';
 
 export const PostDetailPage = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
     const [copied, setCopied] = useState(false);
 
 
