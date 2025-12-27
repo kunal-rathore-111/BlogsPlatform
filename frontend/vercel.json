@@ -1,5 +1,5 @@
 {
-    "outputDirectory": "dist",
+    "outputDirectory": "frontend/dist",
     "env": {
         "VITE_Backend_URL": "@backend_url"
     },
