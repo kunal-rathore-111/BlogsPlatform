@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import { defaultReturn } from "../utils/defaultMethods";
+import { defaultReturn } from "../utils/defaultMethods.js";
 
 
 

@@ -1,5 +1,5 @@
-import { db } from "../drizzle/db"
-import { postsTable } from "../drizzle/tables"
+import { db } from "../drizzle/db.js"
+import { postsTable } from "../drizzle/tables.js"
 
 
 // db function 

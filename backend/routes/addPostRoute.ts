@@ -1,8 +1,8 @@
 
 import express from "express";
-import { addPostMiddleware } from "../middleware/addPostMiddleware";
-import { addController } from "../controller/addController";
-import { checkPasswordMiddleware } from "../middleware/checkPasswordMiddleware";
+import { addPostMiddleware } from "../middleware/addPostMiddleware.js";
+import { addController } from "../controller/addController.js";
+import { checkPasswordMiddleware } from "../middleware/checkPasswordMiddleware.js";
 
 export const addPost = express();
 

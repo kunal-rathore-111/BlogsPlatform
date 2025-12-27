@@ -1,6 +1,6 @@
 import type { RequestHandler, Response } from "express";
-import { defaultReturn } from "../utils/defaultMethods";
-import { addPostsZodFunc } from "../validations/addZod";
+import { defaultReturn } from "../utils/defaultMethods.js";
+import { addPostsZodFunc } from "../validations/addZod.js";
 import z from "zod";
 
 

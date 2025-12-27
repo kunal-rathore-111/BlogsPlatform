@@ -1,6 +1,6 @@
-import { db } from "../drizzle/db";
-import { postsTable } from "../drizzle/tables";
-import type { addPostsTypes } from "../validations/addZod";
+import { db } from "../drizzle/db.js";
+import { postsTable } from "../drizzle/tables.js";
+import type { addPostsTypes } from "../validations/addZod.js";
 
 
 export const addPostsFunc = async (data: addPostsTypes) => {

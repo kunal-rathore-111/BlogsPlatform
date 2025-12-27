@@ -1,6 +1,6 @@
 import type { RequestHandler } from "express";
-import { defaultReturn } from "../utils/defaultMethods";
-import { addPostsFunc } from "../services/addPostService";
+import { defaultReturn } from "../utils/defaultMethods.js";
+import { addPostsFunc } from "../services/addPostService.js";
 
 
 export const addController: RequestHandler = async (req, res) => {

@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import { fetchPostsFunc } from "../services/fetchPostsService";
+import { fetchPostsFunc } from "../services/fetchPostsService.js";
 
 
 

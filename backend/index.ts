@@ -5,9 +5,9 @@ import helmet from 'helmet'; // prevent XSS etc attacks
 import morgan from "morgan";
 import cors from "cors";
 import express from 'express';
-import { fetchPosts } from './routes/fetchPostRoute';
-import { addPost } from './routes/addPostRoute';
-import { deletePost } from './routes/deletePostRoute';
+import { fetchPosts } from './routes/fetchPostRoute.js';
+import { addPost } from './routes/addPostRoute.js';
+import { deletePost } from './routes/deletePostRoute.js';
 
 const app = express();
 app.use(helmet());
