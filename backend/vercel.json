@@ -1,23 +1,22 @@
 {
-  "version": 2,
-  "buildCommand": "bun run build",
-  "builds": [
-    {
-      "src": "index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": "drizzle/migrations/**"
-      }
+    "version": 2,
+    "builds": [
+        {
+            "src": "index.ts",
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": "drizzle/migrations/**"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "index.ts"
+        }
+    ],
+    "env": {
+        "DATABASE_URL": "@database_url",
+        "ADD_POST_PASSWORD": "@add_post_password"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "index.ts"
-    }
-  ],
-  "env": {
-    "DATABASE_URL": "@database_url",
-    "ADD_POST_PASSWORD": "@add_post_password"
-  }
 }

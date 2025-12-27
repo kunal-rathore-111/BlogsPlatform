@@ -1,13 +1,12 @@
 {
-  "buildCommand": "bun run build",
-  "outputDirectory": "dist",
-  "env": {
-    "VITE_Backend_URL": "@backend_url"
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+    "outputDirectory": "dist",
+    "env": {
+        "VITE_Backend_URL": "@backend_url"
+    },
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
 }
