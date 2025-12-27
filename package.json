@@ -1,5 +1,11 @@
 {
-  "name": "blogs-platform",
-  "packageManager": "bun@1.3.4",
-  "workspaces": ["frontend", "backend"]
+    "name": "blogs-platform",
+    "packageManager": "bun@1.3.4",
+    "workspaces": [
+        "frontend",
+        "backend"
+    ],
+    "scripts": {
+        "build": "bun run --cwd frontend build"
+    }
 }
