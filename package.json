@@ -1,0 +1,5 @@
+{
+  "name": "blogs-platform",
+  "packageManager": "bun@1.3.4",
+  "workspaces": ["frontend", "backend"]
+}
