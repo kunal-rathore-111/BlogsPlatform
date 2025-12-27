@@ -1,7 +1,7 @@
-import { integer, pgEnum, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
+import { integer, pgEnum, pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 
 
-export const categoryEnum = pgEnum('categoryEnum', ['entertainment', 'myLife', 'technology', 'fashion', 'travel', 'games', 'jobs', 'others']);
+export const categoryEnum = pgEnum('categoryEnum', ['Entertainment', 'myLife', 'Technology', 'Fashion', 'Travel', 'Games', 'Jobs', 'Others']);
 
 export const postsTable = pgTable('postsTable', {
 
@@ -16,10 +16,12 @@ export const postsTable = pgTable('postsTable', {
     imageUrl: text('imageUrl'),
     readTimeMints: integer('readTimeMints').notNull(),
 
-    category: categoryEnum('category').notNull().default('others'),
+    category: categoryEnum('category').notNull().default('Others'),
+    author: varchar('author', { length: 100 }).notNull().default("unknown"),
 
     tags: text('tags').array().notNull().default([]),
     created_at: timestamp('created_at').defaultNow().notNull(),
     updated_at: timestamp('updated_at').defaultNow().notNull(),
 
 })
+

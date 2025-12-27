@@ -19,6 +19,7 @@ const frotendURL = process.env.Frontend_URL;
 
 const origins = ['http://localhost:5173', frotendURL];
 
+
 app.use(cors({
     origin: (origin, callback) => {
         if (!origin) return callback(null, true) // for postman and mobiles

@@ -1,4 +1,3 @@
-import type { PostType } from "../hooks/queryHooks/useFetch";
 import { defaultCategoryFormat, type propsTypes } from "./defaultFormat";
 
 

@@ -1,9 +1,8 @@
 import { Outlet } from "react-router-dom";
-import { Navbar } from "./Nav";
+import { Navbar } from "../components/Nav";
 import { useSelector } from "react-redux";
 import type { RootState } from "../store/store";
 import { ScrollContextProvider } from "../contextProvider/scrollContext";
-import { PostsDataContextProvider } from "../contextProvider/postsDataContext";
 
 export function LayoutPage() {
 
@@ -35,10 +34,7 @@ function MainPage() {
     return <main className="pt-24 md:pt-28 p-4 md:p-8">
         <div className={`max-w-[950px] mx-auto rounded-3xl overflow-hidden transition-colors duration-700 ${isDark ? 'bg-[#1a1a1a]' : 'bg-white'}`}>
             <div className="p-6 md:p-12">
-
-                <PostsDataContextProvider>
-                    <Outlet />
-                </PostsDataContextProvider>
+                <Outlet />
             </div>
         </div>
     </main>

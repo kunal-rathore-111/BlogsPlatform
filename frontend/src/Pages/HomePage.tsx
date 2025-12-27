@@ -7,9 +7,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../store/store';
 import { useContext, useEffect } from 'react';
 import { ScrollContext } from '../contextProvider/scrollContext';
-import { useFetch } from '../hooks/queryHooks/useFetch';
-import { PostsDataContextProvider } from '../contextProvider/postsDataContext';
-import { defaultCategoryFormat } from '../utils/defaultFormat';
+import { postsDataContext } from '../contextProvider/postsDataContext';
 import { formatData } from '../utils/categoryDataFormating';
 
 
@@ -22,6 +20,8 @@ export function HomePage() {
 
     const context = useContext(ScrollContext);
 
+
+
     /* Scroll whenever the hash changes  */
     useEffect(() => {
         if (location.hash === '#contact') {
@@ -30,7 +30,13 @@ export function HomePage() {
     }, [location.hash]); // imp if at / route and wants to scroll to contact (hash changes)
 
 
-    const { data, isLoading, isError, error } = useFetch(); // runs only ones when the HomePage mounts
+    const postData = useContext(postsDataContext); // runs only ones when the HomePage mounts
+
+    if (!postData) {
+        // TODO: render a fallback (spinner/skeleton) or return null
+        return null;
+    }
+    const { isLoading, error, isError, data } = postData;
 
 
     if (isLoading) return <div>
@@ -64,46 +70,44 @@ export function HomePage() {
         NO POSTS FETCHED</div>
 
 
-    const fashionCategoryFormatedData = formatData({ data: data, categoryTITLE: 'fashion' });
+    const fashionCategoryFormatedData = formatData({ data: data, categoryTITLE: 'Fashion' });
 
 
     const myLifeCategoryFormatedData = formatData({ data: data, categoryTITLE: 'myLife' });
 
-    const entertainmentCategoryFormatedData = formatData({ data: data, categoryTITLE: 'entertainment' });
+    const entertainmentCategoryFormatedData = formatData({ data: data, categoryTITLE: 'Entertainment' });
 
-    const jobsCategoryFormatedData = formatData({ data: data, categoryTITLE: 'jobs' });
+    const jobsCategoryFormatedData = formatData({ data: data, categoryTITLE: 'Jobs' });
 
 
 
-    return <PostsDataContextProvider data={data}>
-        < div className='flex flex-col gap-30' >
-            <div>
-                <div className="flex items-end justify-between mb-8">
+    return < div className='flex flex-col gap-30' >
+        <div>
+            <div className="flex items-end justify-between mb-8">
 
-                    <h2 className={`text-5xl md:text-7xl italic ${isDark ? 'text-white' : 'text-black'}`}>
-                        Top latest posts
-                    </h2>
+                <h2 className={`text-5xl md:text-7xl italic ${isDark ? 'text-white' : 'text-black'}`}>
+                    Top latest posts
+                </h2>
 
-                    <button
-                        onClick={() => navigate('/all-posts')}
-                        className={`text-sm pb-2 transition-all duration-600 hover:translate-x-1 ${isDark ? 'text-white/60 hover:text-white' : 'opacity-60 hover:opacity-100'}`}>
-                        See all posts →
-                    </button>
-                </div>
-                <HeroSection></HeroSection>
+                <button
+                    onClick={() => navigate('/all-posts')}
+                    className={`text-sm pb-2 transition-all duration-600 hover:translate-x-1 ${isDark ? 'text-white/60 hover:text-white' : 'opacity-60 hover:opacity-100'}`}>
+                    See all posts →
+                </button>
             </div>
+            <HeroSection></HeroSection>
+        </div>
 
-            <div className='flex flex-col gap-30'>
-                <CategorySection isDark={isDark} data={fashionCategoryFormatedData} />
-                <CategorySection isDark={isDark} data={myLifeCategoryFormatedData} />
-                <CategorySection isDark={isDark} data={entertainmentCategoryFormatedData} />
-                <CategorySection isDark={isDark} data={jobsCategoryFormatedData} />
-            </div>
+        <div className='flex flex-col gap-30'>
+            <CategorySection isDark={isDark} data={fashionCategoryFormatedData} />
+            <CategorySection isDark={isDark} data={myLifeCategoryFormatedData} />
+            <CategorySection isDark={isDark} data={entertainmentCategoryFormatedData} />
+            <CategorySection isDark={isDark} data={jobsCategoryFormatedData} />
+        </div>
 
-            <footer>
-                <ContactSection isDark={isDark}></ContactSection>
-            </footer>
-        </div >
-    </PostsDataContextProvider >
+        <footer>
+            <ContactSection isDark={isDark}></ContactSection>
+        </footer>
+    </div >
 }
 

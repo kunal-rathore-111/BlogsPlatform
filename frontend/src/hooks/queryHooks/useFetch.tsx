@@ -4,14 +4,17 @@ import { useQuery } from "@tanstack/react-query";
 
 export type PostType = {
     id: string,
-    title: string;
-    description?: string;
+    title: string,
+    description?: string,
     fullDetail: string,
-    imageUrl: string;
+    imageUrl: string,
     readTimeMints: number;
-    category: 'entertainment' | 'myLife' | 'technology' | 'fashion' | 'travel' | 'games' | 'jobs' | 'others';
-    tags: string[];
+    category: 'Entertainment' | 'myLife' | 'Technology' | 'Fashion' | 'Travel' | 'Games' | 'Jobs' | 'Others';
+    tags: string[],
+    author: string,
+    updated_at: string,
 };
+
 
 async function fetchPosts(): Promise<PostType[] | string> {
 

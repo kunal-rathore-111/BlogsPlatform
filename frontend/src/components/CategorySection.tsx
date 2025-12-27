@@ -1,28 +1,31 @@
 
 import { ArrowUpRight } from 'lucide-react';
+import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 
 interface CategoryData {
     title: string;
     subtitle: string;
     cards: {
+
         // Left card data
         left: {
             image: string;
             title: string;
-            gradient: string;
+            id: string;
         },
         // Center large card data
         center: {
             image: string;
             title: string;
-            gradient: string;
+            id: string;
         },
         // Right card data
         right: {
             image: string;
             tag: string;
             title: string;
-            gradient: string;
+            id: string;
         }
     }
 }
@@ -32,13 +35,26 @@ interface CategorySectionProps {
     data: CategoryData;
 }
 
+
 export function CategorySection({ isDark, data }: CategorySectionProps) {
+    const navigate = useNavigate();
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+        >
 
             <HeadingSection></HeadingSection>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+            <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+            >
 
                 <LeftCard></LeftCard>
 
@@ -46,8 +62,8 @@ export function CategorySection({ isDark, data }: CategorySectionProps) {
 
                 <RightCard></RightCard>
 
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     );
 
     function HeadingSection() {
@@ -60,9 +76,31 @@ export function CategorySection({ isDark, data }: CategorySectionProps) {
             </span>
         </div>
     }
+
+    function ArrowComponent({ cardId }: { cardId: string }) {
+        console.log(cardId);
+        return <button
+            onClick={() => navigate(`/post-detail/${cardId}`)}
+            className="cursor-pointer hover:scale-110 transition-transform"
+            aria-label="View post"
+        >
+            <ArrowUpRight className="w-5 h-5" />
+        </button>
+    }
+
     function LeftCard() {
-        return <div className="lg:col-span-3">
-            <div className={`relative rounded-3xl overflow-hidden h-[350px] group ${data.cards.left.gradient}`}>
+        return <motion.div
+            className="lg:col-span-3"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+        >
+            <motion.div
+                className={`relative rounded-3xl overflow-hidden h-[350px] group `}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+            >
 
                 <img
                     src={data.cards.left.image}
@@ -73,7 +111,7 @@ export function CategorySection({ isDark, data }: CategorySectionProps) {
 
                 <div className={`absolute top-4 left-4 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${isDark ? 'bg-white text-black hover:bg-gray-100' : 'bg-white hover:bg-gray-100'}`}>
 
-                    <ArrowUpRight className="w-5 h-5" />
+                    <ArrowComponent cardId={data.cards.left.id}></ArrowComponent>
 
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
@@ -83,13 +121,23 @@ export function CategorySection({ isDark, data }: CategorySectionProps) {
 
                     </p>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     }
 
     function CenterCard() {
-        return < div className="lg:col-span-6" >
-            <div className={`relative rounded-3xl overflow-hidden h-[350px] md:h-[550px] ${data.cards.center.gradient}`}>
+        return <motion.div
+            className="lg:col-span-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+        >
+            <motion.div
+                className={`relative rounded-3xl overflow-hidden h-[350px] md:h-[550px] `}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+            >
                 <img
                     src={data.cards.center.image}
                     alt={data.cards.center.title}
@@ -109,16 +157,26 @@ export function CategorySection({ isDark, data }: CategorySectionProps) {
 
                 <div className={`absolute bottom-6 left-6 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${isDark ? 'bg-white text-black hover:bg-gray-100' : 'bg-white hover:bg-gray-100'}`}>
 
-                    <ArrowUpRight className="w-5 h-5" />
+                    <ArrowComponent cardId={data.cards.center.id}></ArrowComponent>
 
                 </div>
-            </div>
-        </div >
+            </motion.div>
+        </motion.div >
     }
 
     function RightCard() {
-        return <div className="lg:col-span-3">
-            <div className={`relative rounded-3xl overflow-hidden h-[350px] group ${data.cards.right.gradient}`}>
+        return <motion.div
+            className="lg:col-span-3"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+        >
+            <motion.div
+                className={`relative rounded-3xl overflow-hidden h-[350px] group `}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+            >
                 <img
                     src={data.cards.right.image}
                     alt={data.cards.right.title}
@@ -127,7 +185,7 @@ export function CategorySection({ isDark, data }: CategorySectionProps) {
                 />
                 <div className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${isDark ? 'bg-white text-black hover:bg-gray-100' : 'bg-white hover:bg-gray-100'}`}>
 
-                    <ArrowUpRight className="w-5 h-5" />
+                    <ArrowComponent cardId={data.cards.right.id}></ArrowComponent>
 
                 </div>
                 <div className="absolute bottom-6 left-6 right-6">
@@ -142,7 +200,7 @@ export function CategorySection({ isDark, data }: CategorySectionProps) {
 
                     </p>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     }
 }

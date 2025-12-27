@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 
-const category = z.enum(['entertainment', 'myLife', 'technology', 'fashion', 'travel', 'games', 'jobs', 'others']);
+const category = z.enum(['Entertainment', 'myLife', 'Technology', 'Fashion', 'Travel', 'Games', 'Jobs', 'Others']);
 
 
 

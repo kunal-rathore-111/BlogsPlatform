@@ -3,12 +3,19 @@ import { type PostType } from "../hooks/queryHooks/useFetch";
 
 
 
+type PostsContextType = {
+    data: PostType[] | string | undefined,
+    isError: boolean,
+    error: Error | null,
+    isLoading: boolean,
+}
 
-export const postsDataContext = createContext<PostType[] | null>(null);
 
-export function PostsDataContextProvider({ children, data }: { children: ReactNode, data: PostType[] }) {
+export const postsDataContext = createContext<PostsContextType | null>(null);
 
-    return <postsDataContext.Provider value={data}>
+export function PostsDataContextProvider({ children, props }: { children: ReactNode, props: PostsContextType }) {
+
+    return <postsDataContext.Provider value={props}>
         {children}
     </postsDataContext.Provider>
 }

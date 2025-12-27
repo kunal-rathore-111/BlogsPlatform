@@ -3,14 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../store/store';
 import { toggleTheme } from '../features/themeSlice';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { ScrollContext } from '../contextProvider/scrollContext';
 
 export function Navbar() {
 
     const navigate = useNavigate();
 
-    const context = useContext(ScrollContext);  // context to use useScroll function
 
 
     const isDark = useSelector((state: RootState) => state.theme.isDark);
@@ -26,7 +23,7 @@ export function Navbar() {
                         Kunal's Gallery
                     </button>
 
-                    <nav className="flex flex-col sm:flex-row items-center gap-6 text-sm">
+                    <nav className="flex flex-row items-center gap-6 text-sm">
 
                         <AllPosts_ContactButton title={'AllPosts'}
                             onClickFunc={() => navigate('/all-posts')}
