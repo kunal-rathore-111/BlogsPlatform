@@ -132,9 +132,7 @@ function RightCards() {
                     <div className={`text-sm mb-1 ${isDark ? 'text-white' : ''}`}>
                         {post2?.title || "TITLE HERE"}
                     </div>
-                    <h3 className={`text-2xl mb-3 ${isDark ? 'text-white' : ''}`}>
-                        {post2?.description}
-                    </h3>
+
                     <button
                         onClick={() => navigate(`/post-detail/${post2?.id}`)} /*Onclick will Redirect to post detail route */
                         className={`text-xs hover:underline transition-all ${isDark ? 'text-white' : 'text-black'}`}>

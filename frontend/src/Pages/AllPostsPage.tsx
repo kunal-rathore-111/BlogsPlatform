@@ -82,9 +82,7 @@ export const AllPostsPage = () => {
 
                             {/* Date & Tags */}
                             <div className="absolute top-4 left-4 right-4 flex flex-wrap gap-2">
-                                <span className={`px-3 py-1 rounded-full backdrop-blur text-xs ${isDark ? 'bg-white/90 text-black' : 'bg-white/90'}`}>
-                                    {blog.description}
-                                </span>
+
                                 {blog.tags.slice(0, 2).map((tag, index) => (
 
                                     <span

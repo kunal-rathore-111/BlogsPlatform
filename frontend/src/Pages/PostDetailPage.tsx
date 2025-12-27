@@ -153,16 +153,48 @@ export const PostDetailPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className={`prose prose-lg max-w-none ${isDark
-                ? 'prose-invert prose-headings:text-white prose-p:text-white/80 prose-a:text-blue-400'
-                : 'prose-headings:text-black prose-p:text-black/80 prose-a:text-blue-600'
-                }`}
+            className="max-w-5xl mx-auto"
         >
-            {post?.description?.split('\n\n').map((paragraph, index) => (
-                <p key={index} className={isDark ? 'text-white/80' : 'text-black/80'}>
-                    {paragraph}
-                </p>
-            ))}
+            <div className="space-y-8">
+                {post?.fullDetail?.split('\n\n').map((paragraph, index) => {
+                    // First paragraph - special intro styling with drop cap
+                    if (index === 0) {
+                        return (
+                            <motion.p
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                                className={`text-xl md:text-2xl leading-relaxed first-letter:text-6xl md:first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:leading-[0.8] first-letter:mt-1 mb-8 ${isDark ? 'text-white/90 first-letter:text-white' : 'text-black/90 first-letter:text-black'}`}
+                            >
+                                {paragraph}
+                            </motion.p>
+                        );
+                    }
+
+                    // Rest of paragraphs - clean, readable style with subtle width variation
+                    const isEven = index % 2 === 0;
+
+                    return (
+                        <motion.p
+                            key={index}
+                            initial={{ opacity: 0, y: 15 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4, delay: index * 0.05 }}
+                            className={`text-lg md:text-xl leading-relaxed ${isEven ? 'max-w-4xl' : 'max-w-[90%]'} ${isDark ? 'text-white/85' : 'text-black/85'}`}
+                        >
+                            {paragraph}
+                        </motion.p>
+                    );
+                })}
+            </div>
+
+            {/* Decorative end mark */}
+            <div className={`mt-16 mb-8 flex items-center gap-2 ${isDark ? 'opacity-20' : 'opacity-15'}`}>
+                <div className={`h-px w-16 ${isDark ? 'bg-white' : 'bg-black'}`}></div>
+                <div className={`h-1.5 w-1.5 rounded-full ${isDark ? 'bg-white' : 'bg-black'}`}></div>
+                <div className={`h-px w-16 ${isDark ? 'bg-white' : 'bg-black'}`}></div>
+            </div>
         </motion.div>
         <motion.div
             className={`mt-12 pt-8 border-t ${isDark ? 'border-white/10' : 'border-black/10'}`}
