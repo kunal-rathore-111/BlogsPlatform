@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import { checkID } from "../validations/checkPostsId";
+import { checkID } from "../validations/checkPostsId.js";
 
 
 export const checkIdMiddleware: RequestHandler = (req, res, next) => {

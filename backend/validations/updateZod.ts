@@ -1,5 +1,5 @@
 import z from "zod";
-import { category } from "./addZod";
+import { category } from "./addZod.js";
 
 
 export const updatePostSchema = z.object({
