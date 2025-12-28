@@ -11,11 +11,11 @@ type PostsContextType = {
 }
 
 
-export const postsDataContext = createContext<PostsContextType | null>(null);
+export const PostsDataContext = createContext<PostsContextType | null>(null);
 
 export function PostsDataContextProvider({ children, props }: { children: ReactNode, props: PostsContextType }) {
 
-    return <postsDataContext.Provider value={props}>
+    return <PostsDataContext.Provider value={props}>
         {children}
-    </postsDataContext.Provider>
+    </PostsDataContext.Provider>
 }

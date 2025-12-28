@@ -8,6 +8,7 @@ import express from 'express';
 import { fetchPosts } from './routes/fetchPostRoute.js';
 import { addPost } from './routes/addPostRoute.js';
 import { deletePost } from './routes/deletePostRoute.js';
+import { updatePost } from './routes/updatePostRotue.js';
 
 const app = express();
 app.use(helmet());
@@ -37,6 +38,7 @@ const PORT = 3000;
 
 app.use('/fetch-posts', fetchPosts);
 app.use('/add-post', addPost);
+app.use('/update-post', updatePost);
 app.use('/delete-post', deletePost);
 
 
