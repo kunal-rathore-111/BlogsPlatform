@@ -15,9 +15,5 @@
             "dest": "index.ts"
         }
     ],
-    "env": {
-        "DATABASE_URL": "@database_url",
-        "ADD_POST_PASSWORD": "@add_post_password",
-        "Frontend_URL": "@frontend_url"
-    }
+   
 }
