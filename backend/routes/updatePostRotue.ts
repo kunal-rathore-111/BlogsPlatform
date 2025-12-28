@@ -1,9 +1,9 @@
 
 import express from "express";
-import { checkPasswordMiddleware } from "../middleware/checkPasswordMiddleware";
-import { checkIdMiddleware } from "../middleware/checkIdMiddleware";
-import { updatePostController } from "../controller/updatePostController";
-import { updatePostMiddleware } from "../middleware/updatePostMiddleware";
+import { checkPasswordMiddleware } from "../middleware/checkPasswordMiddleware.js";
+import { checkIdMiddleware } from "../middleware/checkIdMiddleware.js";
+import { updatePostController } from "../controller/updatePostController.js";
+import { updatePostMiddleware } from "../middleware/updatePostMiddleware.js";
 
 export const updatePost = express();
 
