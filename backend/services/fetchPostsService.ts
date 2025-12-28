@@ -8,6 +8,7 @@ export const fetchPostsFunc = async () => {
 
     try {
         const data = await db.select().from(postsTable).orderBy(desc(postsTable.updated_at));
+
         return data;
     } catch (err) {
         console.error(err);

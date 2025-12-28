@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../store/store';
 import { useContext, useEffect } from 'react';
 import { ScrollContext } from '../contextProvider/scrollContext';
-import { postsDataContext } from '../contextProvider/postsDataContext';
+import { PostsDataContext } from '../contextProvider/postsDataContext';
 import { formatData } from '../utils/categoryDataFormating';
 
 
@@ -30,7 +30,7 @@ export function HomePage() {
     }, [location.hash]); // imp if at / route and wants to scroll to contact (hash changes)
 
 
-    const postData = useContext(postsDataContext); // runs only ones when the HomePage mounts
+    const postData = useContext(PostsDataContext); // runs only ones when the HomePage mounts
 
     if (!postData) {
         // TODO: render a fallback (spinner/skeleton) or return null

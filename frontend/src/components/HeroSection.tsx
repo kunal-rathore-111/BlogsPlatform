@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { motion } from "motion/react";
 import type { RootState } from "../store/store";
 import { useContext } from "react";
-import { postsDataContext } from "../contextProvider/postsDataContext";
+import { PostsDataContext } from "../contextProvider/postsDataContext";
 import { defaultImgURL } from "../utils/defaultFormat";
 
 
@@ -27,7 +27,7 @@ export function HeroSection() {
 function LeftCard() {
     const isDark = useSelector((state: RootState) => state.theme.isDark);
 
-    const postsData = useContext(postsDataContext);
+    const postsData = useContext(PostsDataContext);
 
     const data = postsData?.data;
 
@@ -104,7 +104,7 @@ function RightCards() {
     function RightCard1() {
 
 
-        const postsData = useContext(postsDataContext);
+        const postsData = useContext(PostsDataContext);
 
         const post2 = Array.isArray(postsData?.data) ? postsData.data?.[1] : null;
 
@@ -147,7 +147,7 @@ function RightCards() {
     function RightCard2() {
 
 
-        const postsData = useContext(postsDataContext);
+        const postsData = useContext(PostsDataContext);
 
         const post3 = Array.isArray(postsData?.data) ? postsData.data?.[2] : null;
 

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { motion } from 'motion/react';
 import type { RootState } from '../store/store';
 import { BackToPostsButton } from '../components/BackToPostsButton';
-import { postsDataContext } from '../contextProvider/postsDataContext';
+import { PostsDataContext } from '../contextProvider/postsDataContext';
 import { NoPostsComponent } from '../components/NoPosts';
 
 
@@ -13,7 +13,7 @@ export const PostDetailPage = () => {
     const [copied, setCopied] = useState(false);
 
 
-    const postsData = useContext(postsDataContext);
+    const postsData = useContext(PostsDataContext);
 
 
 

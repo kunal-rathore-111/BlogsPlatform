@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { RootState } from '../store/store';
-import { postsDataContext } from '../contextProvider/postsDataContext';
+import { PostsDataContext } from '../contextProvider/postsDataContext';
 import { NoPostsComponent } from '../components/NoPosts';
 
 export const AllPostsPage = () => {
@@ -15,7 +15,7 @@ export const AllPostsPage = () => {
 
     const [visibleCount, setVisibleCount] = useState(5);
 
-    const postsData = useContext(postsDataContext);
+    const postsData = useContext(PostsDataContext);
 
     const blogs = postsData?.data;
 
