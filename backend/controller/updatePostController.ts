@@ -1,5 +1,5 @@
 import type { RequestHandler } from "express";
-import { updatePostFunc } from "../services/updatePostService";
+import { updatePostFunc } from "../services/updatePostService.js";
 
 
 
