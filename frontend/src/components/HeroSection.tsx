@@ -113,7 +113,7 @@ function RightCards() {
         const isDark = useSelector((state: RootState) => state.theme.isDark);
         return <>
             <motion.div
-                className={`relative rounded-3xl p-6 h-[210px] flex flex-col justify-between ${isDark ? 'bg-gradient-to-br from-cyan-900 to-cyan-800' : 'bg-gradient-to-br from-cyan-100 to-cyan-200'}`}
+                className={`relative rounded-3xl p-6 h-[210px] flex flex-col justify-evenly ${isDark ? 'bg-gradient-to-br from-cyan-900 to-cyan-800' : 'bg-gradient-to-br from-cyan-100 to-cyan-200'}`}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
             >
@@ -128,14 +128,14 @@ function RightCards() {
                         <Plus className="w-4 h-4" />
                     </div>
                 </div>
-                <div>
-                    <div className={`text-sm mb-1 ${isDark ? 'text-white' : ''}`}>
+                <div className="flex flex-col gap-5 items-start">
+                    <div className={`text-sm ${isDark ? 'text-white' : 'text-black'}`}>
                         {post2?.title || "TITLE HERE"}
                     </div>
 
                     <button
                         onClick={() => navigate(`/post-detail/${post2?.id}`)} /*Onclick will Redirect to post detail route */
-                        className={`text-xs hover:underline transition-all ${isDark ? 'text-white' : 'text-black'}`}>
+                        className={`text-xs underline hover:no-underline cursor-pointer transition-all ${isDark ? 'text-white' : 'text-black'}`}>
                         Learn more
                     </button>
                 </div>

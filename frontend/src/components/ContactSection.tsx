@@ -7,6 +7,23 @@ import { ScrollContext } from "../contextProvider/scrollContext";
 export const ContactSection = ({ isDark }: { isDark: boolean }) => {
     const context = useContext(ScrollContext);
 
+
+    const contactLinks = [
+        { label: "GitHub", Icon: Github, href: "https://github.com/kunal-rathore-111" },
+        {
+            label: "LinkedIn",
+            Icon: Linkedin,
+            href: "https://www.linkedin.com/in/kunal-rathore-11-in",
+        },
+        {
+            label: "Email",
+            Icon: Mail,
+            href: "https://mail.google.com/mail/u/0/?fs=1&to=kunalworkspace111@gmail.com&tf=cm",
+        },
+        { label: "Twitter", Icon: Twitter, href: "https://x.com/kunalx1codes" },
+    ];
+
+
     return <motion.div
         ref={context?.contactRef}
         className="mt-16 md:mt-24 text-center"
@@ -33,10 +50,13 @@ export const ContactSection = ({ isDark }: { isDark: boolean }) => {
             viewport={{ once: true }}
         >
 
-            {[Github, Linkedin, Mail, Twitter].map((Icon, i) => (
-                <motion.div
-                    onClick={() => { }}
-                    key={i}
+            {contactLinks.map(({ Icon, href, label }, i) =>
+                <motion.a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener"
+                    aria-label={label}
                     className="w-28 h-16 rounded-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-pointer"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -47,8 +67,8 @@ export const ContactSection = ({ isDark }: { isDark: boolean }) => {
 
                     <Icon className="w-6 h-6 text-black" />
 
-                </motion.div>
-            ))}
+                </motion.a>
+            )}
         </motion.div>
-    </motion.div>
+    </motion.div >
 }

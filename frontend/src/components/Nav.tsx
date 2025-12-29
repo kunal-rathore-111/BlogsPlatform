@@ -19,8 +19,8 @@ export function Navbar() {
 
                     {/* Logo/Name */}
                     <button onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); navigate('/') }}
-                        className={` cursor-pointer text-2xl tracking-tight transition-opacity hover:opacity-70 ${isDark ? 'text-white' : 'text-black'}`}>
-                        Kunal's Gallery
+                        className={` cursor-pointer text-2xl tracking-tight transition-opacity hover:opacity-70  italic ${isDark ? 'text-white' : 'text-black'}`}>
+                        myEpistoria
                     </button>
 
                     <nav className="flex flex-row items-center gap-6 text-sm">
