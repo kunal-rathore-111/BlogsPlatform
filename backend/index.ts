@@ -18,7 +18,7 @@ app.use(express.json());
 
 const frotendURL = process.env.Frontend_URL;
 
-const origins = ['http://localhost:5173', frotendURL];
+const origins = ['http://localhost:5173', frotendURL, 'https://portfolio-react-v1-71u4.vercel.app'];
 
 
 app.use(cors({
