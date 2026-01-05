@@ -8,4 +8,4 @@ import { checkIdMiddleware } from "../middleware/checkIdMiddleware.js";
 export const addPost = express();
 
 
-addPost.post('/', checkPasswordMiddleware, checkIdMiddleware, addPostMiddleware, addController);
+addPost.post('/', checkPasswordMiddleware, addPostMiddleware, addController);
