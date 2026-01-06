@@ -33,7 +33,7 @@ export const PostDetailPage = () => {
 
     // invalid post id
     if (!post) {
-        return <div className="flex flex-col items-center justify-center min-h-[400px] text-white">
+        return <div className="flex flex-col items-center justify-center min-h-100 text-white">
             <h2 className="text-3xl font-bold mb-4">Post not found</h2>
             <BackToPostsButton></BackToPostsButton>
         </div>

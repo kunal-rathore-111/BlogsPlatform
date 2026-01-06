@@ -11,6 +11,6 @@ export function BackToPostsButton() {
         onClick={() => navigate('/all-posts')}
         className={`flex items-center gap-2 mb-8 transition-colors ${isDark ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'}`}>
 
-        <span className='flex gap-2'> <ArrowLeft className="w-5 h-5" />Back to Posts</span>
+        <span className='flex gap-2 items-center'> <ArrowLeft className="w-5 h-5" />Back to Posts</span>
     </button>
 } 
