@@ -166,8 +166,6 @@ function CardSection({ isDark, index, children }: CardSectionProps) {
 
 export function LandingPage({ isDark }: { isDark: boolean }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isSnapping, setIsSnapping] = useState(false);
-  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
