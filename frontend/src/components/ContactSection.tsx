@@ -57,7 +57,7 @@ export const ContactSection = ({ isDark }: { isDark: boolean }) => {
                     target="_blank"
                     rel="noopener"
                     aria-label={label}
-                    className={`w-28 h-16 rounded-full ${isDark ? "bg-white text-black" : 'bg-black text-white'} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-pointer`}
+                    className={`w-[66px] h-16 lg:w-28 rounded-full ${isDark ? "bg-white text-black" : 'bg-black text-white'} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg cursor-pointer`}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
@@ -65,7 +65,7 @@ export const ContactSection = ({ isDark }: { isDark: boolean }) => {
                     whileHover={{ scale: 1.1, y: -5 }}
                 >
 
-                    <Icon className="w-6 h-6" />
+                    <Icon className="md:w-6 md: h-6" />
 
                 </motion.a>
             )}

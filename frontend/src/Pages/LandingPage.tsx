@@ -182,67 +182,7 @@ export function LandingPage({ isDark }: { isDark: boolean }) {
   }, []);
 
   const navigate = useNavigate();
-  // Magnetic scroll effect
-  useEffect(() => {
-    // Collect all section elements
-    const sections = document.querySelectorAll('[data-section-index]');
-    sectionsRef.current = Array.from(sections) as HTMLElement[];
 
-    let scrollTimeout: ReturnType<typeof setTimeout>;
-
-    const handleScroll = () => {
-      if (isSnapping) return;
-
-      // Debounce to avoid too many calculations
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        let targetSection: HTMLElement | null = null;
-        let minDistance = Infinity;
-        const viewportHeight = window.innerHeight;
-
-        sectionsRef.current.forEach((section) => {
-          if (!section) return;
-
-          const rect = section.getBoundingClientRect();
-
-          // Calculate how much of the section is visible from the top
-          const visibleFromTop = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0));
-          const visibilityPercentage = (visibleFromTop / viewportHeight) * 100;
-
-          // Find section that's between 20% and 80% visible and closest to snapping position
-          if (visibilityPercentage >= 20 && visibilityPercentage < 95) {
-            const distanceFromTop = Math.abs(rect.top);
-            if (distanceFromTop < minDistance && distanceFromTop > 10) {
-              minDistance = distanceFromTop;
-              targetSection = section;
-            }
-          }
-        });
-
-        // Snap to the target section if found
-        const sectionToSnap = targetSection as HTMLElement | null;
-        if (sectionToSnap && minDistance < viewportHeight * 0.7) {
-          const rect = sectionToSnap.getBoundingClientRect();
-          setIsSnapping(true);
-
-          window.scrollTo({
-            top: window.scrollY + rect.top,
-            behavior: 'smooth'
-          });
-
-          setTimeout(() => {
-            setIsSnapping(false);
-          }, 1000);
-        }
-      }, 100);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
-    };
-  }, [isSnapping]);
 
   return <>
     <div className="fixed top-10 right-10 z-100">
