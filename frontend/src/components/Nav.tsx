@@ -4,6 +4,9 @@ import type { RootState } from '../store/store';
 import { toggleTheme } from '../features/themeSlice';
 import { useNavigate } from 'react-router-dom';
 
+import { Home } from 'lucide-react';
+import { DarkToggle } from './DarkToggle';
+
 export function Navbar() {
 
     const navigate = useNavigate();
@@ -17,8 +20,13 @@ export function Navbar() {
             <div className="flex items-center justify-between">
                 <div className="flex items-center gap-8">
 
+                    <div onClick={() => { navigate('/') }}
+                        className={`cursor-pointer ${isDark ? 'text-white' : 'text-black'}`}>
+                        <Home></Home>
+                    </div>
+
                     {/* Logo/Name */}
-                    <button onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); navigate('/') }}
+                    <button onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); navigate('/home') }}
                         className={`  text-2xl tracking-tight transition-opacity hover:opacity-70  italic ${isDark ? 'text-white' : 'text-black'}`}>
                         Epistoria
                     </button>
@@ -30,7 +38,7 @@ export function Navbar() {
                             isDark={isDark} />
 
                         <AllPosts_ContactButton title={'Contact'}
-                            onClickFunc={() => navigate('/#contact')}
+                            onClickFunc={() => navigate('/home/#contact')}
                             isDark={isDark} />
 
                     </nav>
@@ -54,19 +62,4 @@ const AllPosts_ContactButton = ({ title, onClickFunc, isDark }: AllPosts_Contact
 
     </button>
 
-}
-
-function DarkToggle() {
-
-    const isDark = useSelector((state: RootState) => state.theme.isDark);
-    const dispatch = useDispatch();
-    return <button
-        onClick={() => { dispatch(toggleTheme()) }}
-        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-700 ${isDark
-            ? 'bg-white text-black hover:bg-gray-200'
-            : 'bg-black text-white hover:bg-gray-800'
-            }`}
-    >
-        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-    </button>
 }
