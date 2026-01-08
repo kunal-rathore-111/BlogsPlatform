@@ -5,13 +5,9 @@ import { LayoutPage } from "./Pages/LayoutPage";
 import { HomePage } from "./Pages/HomePage";
 import { PostDetailPage } from "./Pages/PostDetailPage";
 import { AllPostsPage } from "./Pages/AllPostsPage";
-import { PostsDataContextProvider } from "./contextProvider/postsDataContext";
-import { useFetch } from "./hooks/queryHooks/useFetch";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import type { RootState } from "./store/store";
 import { LandingPage } from "./Pages/LandingPage";
-import { toggleTheme } from "./features/themeSlice";
-import { Moon, Sun } from "lucide-react";
 
 
 
